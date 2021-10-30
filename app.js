@@ -86,13 +86,14 @@ const UI = {
         } = this.loadSelector()
         const { weather, main, name: cityName } = data;
 
+        const url = this.getIcon(weather[0].icon);
+
+        // setting element
         cityInfoElm.textContent = cityName;
         temperatureElm.textContent = `Temperature: ${main.temp}°C`;
         pressureElm.textContent = `Pressure: ${main.pressure}`;
         humidityElm.textContent = `Humidity: ${main.humidity}`;
         feelElm.textContent = weather[0].main;
-
-        const url = this.getIcon(weather[0].icon);
         iconElm.setAttribute('src', url);
 
     },
@@ -108,6 +109,7 @@ const UI = {
                 /// setting city and country
                 weatherData.city = city;
                 weatherData.country = country;
+
                 /// save data to localStorage
                 storage.city = city;
                 storage.country = country;
@@ -119,7 +121,9 @@ const UI = {
                 this.populateUI(data)
             }
         })
-        window.addEventListener('DOMContentLoaded', this.getAndPopulateUI.bind(this))
+        window.addEventListener('DOMContentLoaded', () => {
+            this.getAndPopulateUI()
+        })
     }
 }
 UI.init();
@@ -143,7 +147,7 @@ const weatherData = {
             } else {
                 return data
             }
-        } catch (error) {
+        } catch (err) {
             UI.showMessage('Problem in fetching weather')
         }
     }
