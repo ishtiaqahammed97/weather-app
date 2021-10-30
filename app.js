@@ -145,7 +145,7 @@ const UI = {
       //Requesting data from server
       try {
         const res = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.country}&units=metric&appid=${this.APP_ID}`
+          `https://api.openweathermap.org/data/2.5/weather?q=${this.city},${this.country}&units=metric&appid=${this.APP_ID}`
         )
         const data = await res.json()
    
