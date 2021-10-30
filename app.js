@@ -140,7 +140,7 @@ const UI = {
   const weatherData = {
     city: '',
     country: '',
-    APP_ID: 'd777b9cd1436c98f958dac1e189e4f09',
+    APP_ID: '14e7e8a98a19fe7113c41d2a346395f3',
     async getData() {
       //Requesting data from server
       try {
